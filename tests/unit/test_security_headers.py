@@ -3,7 +3,7 @@
 def test_csp(create_app_setup):
     """Response header should cold contain this Content-Security-Policyheader"""
     response = create_app_setup.get('/requests')
-    assert response.headers.get('Content-Security-Policy') == "default-src 'self'; sandbox; frame-ancestors 'none'"
+    assert response.headers.get('Content-Security-Policy') == "sandbox; default-src 'self'; frame-ancestors 'none'"
 
 def test_hsts(create_app_setup):
     """Response header should cold contain this Strict-Transport-Security header"""
