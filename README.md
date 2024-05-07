@@ -1,16 +1,8 @@
 Purpose of this repo:
-create a boilerplate for a scalable but still compact Flask app.
+Create a boilerplate for a scalable but still compact Flask app.
 
-You can run the app in a few ways:
-Docker, pipenv
+You can run the app using either Docker or pipenv
 
-security
-snyk, dependabot
-run bandit https://github.com/PyCQA/bandit
-run semgrep
-add security headers, especially if you don't use cloudflare
+The only thing missing here to run the app is set of secrets. You can mock CONFIG_TYPE = config.DevConfig, SOME_SECRET, TEST_DB_SECRET, PROD_DB_SECRET, DEV_DB_SECRET in .env file
 
-and for the love of God, use a linter: pylint
-
-Why factory pattern is here?
-To run tests and the app using different environmental variables
+This is still work in progress, however, the main idea is laid out in the existing code.
