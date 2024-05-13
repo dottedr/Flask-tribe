@@ -9,7 +9,6 @@ The only thing missing here to run the app is set of secrets. You can mock CONFI
 
 This is still work in progress, however, the main idea is laid out in the existing code.
 
-## Endpoints
 
 #### To Setup and Start
 ```bash
@@ -21,7 +20,9 @@ or
 ```bash
 docker build -t flask-tribe .
 
+
 ```
+## Endpoints
 
 #### Get All Request Records
 ```bash
@@ -74,5 +75,6 @@ This project is using pytest. While running your enviroment run  ```python -m py
 |__Pipfile.lock (pipenv config)
 |
 |__requirements.txt (config file needed for running this app when NOT using pipenv, but generated using "pipenv run pip freeze  > requirements.txt")
+
 ```
 
