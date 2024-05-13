@@ -1,8 +1,8 @@
-
 """The Endpoints to manage the BOOK_REQUESTS"""
 import uuid
 from datetime import datetime, timedelta
 from flask import jsonify, abort, request, Blueprint
+from validate_email import validate_email
 
 book_requests_blueprint = Blueprint("book_requests",__name__)
 
@@ -13,19 +13,19 @@ def get_blueprint():
 
 BOOK_REQUESTS = {
     "8c36e86c-13b9-4102-a44f-646015dfd981": {
-        'title': 'Good Book',
+        'title': 'The Book',
         'email': 'testuser1@test.com',
         'timestamp': (datetime.today() - timedelta(1)).timestamp()
     },
     "04cfc704-acb2-40af-a8d3-4611fab54ada": {
-        'title': 'Bad Book',
+        'title': 'The Book Part II',
         'email': 'testuser2@test.com',
         'timestamp': (datetime.today() - timedelta(2)).timestamp()
     }
 }
 
 
-@book_requests_blueprint.route('/requests', methods=['GET'])
+@book_requests_blueprint.route('/book_requests', methods=['GET'])
 def get_records():
     """Return all book requests
     @return: 200: an array of all known BOOK_REQUESTS as a \
@@ -34,7 +34,7 @@ def get_records():
     return jsonify(BOOK_REQUESTS)
 
 
-@book_requests_blueprint.route('/request/<string:_id>', methods=['GET'])
+@book_requests_blueprint.route('/book_request/<string:_id>', methods=['GET'])
 def get_record_by_id(_id):
     """Get book request details by it's id
     @param _id: the id
@@ -47,7 +47,7 @@ def get_record_by_id(_id):
     return jsonify(BOOK_REQUESTS[_id])
 
 
-@book_requests_blueprint.route('/request', methods=['POST'])
+@book_requests_blueprint.route('/book_request', methods=['POST'])
 def create_record():
     """Create a book request record
     @param email: post : the requesters email address
@@ -78,7 +78,7 @@ def create_record():
     return jsonify({"id": new_uuid}), 201
 
 
-@book_requests_blueprint.route('/request/<string:_id>', methods=['PUT'])
+@book_requests_blueprint.route('/book_request/<string:_id>', methods=['PUT'])
 def edit_record(_id):
     """Edit a book request record
     @param email: post : the requesters email address
@@ -111,7 +111,7 @@ def edit_record(_id):
     return jsonify(BOOK_REQUESTS[_id]), 200
 
 
-@book_requests_blueprint.route('/request/<string:_id>', methods=['DELETE'])
+@book_requests_blueprint.route('/book_request/<string:_id>', methods=['DELETE'])
 def delete_record(_id):
     """Delete a book request record
     @param id: the id
