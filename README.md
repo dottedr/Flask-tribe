@@ -18,8 +18,8 @@ pipenv flask --debug run
 ```
 or 
 ```bash
-docker build -t flask-tribe .
-
+docker build -t flask-tribe:0.0.0 .
+docker run -it flask-tribe:0.0.0
 
 ```
 ## Endpoints
